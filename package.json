@@ -1,0 +1,24 @@
+{
+  "name": "impressao-direta-",
+  "version": "1.0.0",
+  "description": "prototipo para teste de impressao direta",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ogustav0/impressao-direta-.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Ogustav0/impressao-direta-/issues"
+  },
+  "homepage": "https://github.com/Ogustav0/impressao-direta-#readme",
+  "dependencies": {
+    "express": "^5.1.0",
+    "muter": "^0.7.0"
+  }
+}
