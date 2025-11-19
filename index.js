@@ -18,7 +18,9 @@ const upload = multer({ storage });
 // Impressora de rede no Windows
 const printerPath = '\\\\n050fp01\\Central';
 
-// Rota para receber e imprimir
+// Caminho completo do Adobe Reader
+const adobePath = 'C:\\Arquivos de Programas\\Adobe\\Acrobat DC\\Acrobat\\AcroRd32.exe';
+
 app.post('/print', upload.any(), (req, res) => {
   if (!req.files || req.files.length === 0) {
     return res.status(400).send('Nenhum arquivo enviado.');
@@ -27,16 +29,12 @@ app.post('/print', upload.any(), (req, res) => {
   const filePath = path.resolve(req.files[0].path);
   console.log('Arquivo recebido:', filePath);
 
-  // --- Opção 1: Usando Adobe Reader ---
-  // Certifique-se que o Adobe Reader está instalado e no PATH
-  // const printProcess = spawn('AcroRd32.exe', ['/t', filePath, printerPath]);
-
-  // --- Opção 2: Usando SumatraPDF (recomendado, mais leve) ---
-  // Baixe SumatraPDF e coloque o executável no PATH do Windows
-  const printProcess = spawn('SumatraPDF.exe', [
-    '-print-to', printerPath,
-    filePath
-  ]);
+  // Comando Adobe Reader silencioso
+  const printProcess = spawn(
+    `"${adobePath}"`,
+    ['/t', filePath, printerPath],
+    { shell: true }
+  );
 
   printProcess.on('close', (code) => {
     if (code === 0) {
