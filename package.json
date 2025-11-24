@@ -19,6 +19,8 @@
   "homepage": "https://github.com/Ogustav0/impressao-direta-#readme",
   "dependencies": {
     "express": "^5.1.0",
-    "muter": "^0.7.0"
+    "multer": "^2.0.2",
+    "muter": "^0.7.0",
+    "pdf-to-printer": "^5.6.1"
   }
 }
